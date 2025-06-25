@@ -28,16 +28,17 @@ def check_guess(player_word, secret_word) -> int:
             unguessed_letters.append(letter)
 
     # Проверяем оставшиеся буквы из догадки на их наличие в слове.
-    for idx, letter in enumerate(player_letters):
-        if idx in guessed_idx:
-            continue
+    if unguessed_letters:
+        for idx, letter in enumerate(player_letters):
+            if idx in guessed_idx:
+                continue
 
-        # Если буква игрока есть в списке неугаданных букв, то вставляем
-        # ее в нижнем регистре в список букв, которые появятся на экране.
-        # Удаялем эту букву из списка неугаданных.
-        if letter in unguessed_letters:
-            letters_on_screen[idx] = letter
-            unguessed_letters.pop(unguessed_letters.index(letter))
+            # Если буква игрока есть в списке неугаданных букв, то вставляем
+            # ее в нижнем регистре в список букв, которые появятся на экране.
+            # Удаялем эту букву из списка неугаданных.
+            if letter in unguessed_letters:
+                letters_on_screen[idx] = letter
+                unguessed_letters.pop(unguessed_letters.index(letter))
 
     print(' '.join(letters_on_screen), "\n")
 
