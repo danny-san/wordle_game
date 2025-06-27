@@ -1,14 +1,16 @@
 import random
 
-from words import WORDS_5
-
 
 WORD_LENGTH = 5
 TRIES = 6
 
 
 def generate_word() -> str:
-    return random.choice(WORDS_5)
+    with open('words_5.txt', 'r') as f:
+        words = f.readlines()
+        cleaned_words = [word.rstrip('\n') for word in words]
+
+    return random.choice(cleaned_words)
 
 
 def check_guess(player_word, secret_word) -> int:
@@ -53,7 +55,8 @@ def game():
         player_word = input(f"Please enter a {WORD_LENGTH} letter word: ")
         number_of_guessed = check_guess(player_word, secret_word)
         if number_of_guessed == WORD_LENGTH:
-            print("You are right!")
+            print("You are right!\n")
+            input("Press ENTER to exit.")
             break
         else:
             attempts += 1
@@ -64,8 +67,9 @@ def game():
         if attempts == TRIES:
             print(
                 "Sorry, you lost this time. Please try again!\n"
-                f"The word was {secret_word.upper()}."
+                f"The word was {secret_word.upper()}.\n"
             )
+            input("Press ENTER to exit.")
             break
 
 
