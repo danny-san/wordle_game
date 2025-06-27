@@ -53,6 +53,11 @@ def game():
 
     while True:
         player_word = input(f"Please enter a {WORD_LENGTH} letter word: ")
+
+        if len(player_word) != WORD_LENGTH or not player_word.isalpha():
+            print('Input error!\n')
+            continue
+
         number_of_guessed = check_guess(player_word, secret_word)
         if number_of_guessed == WORD_LENGTH:
             print("You are right!\n")
