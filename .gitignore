@@ -1,7 +1,11 @@
-.mypy_cache
-__pycache__
+.mypy_cache/
+__pycache__/
+venv/
+build/
+dist/
 
 test.py
 words.py
+game.spec
 
 words_5_sort.txt
