@@ -1,4 +1,4 @@
-import random
+from wonderwords import RandomWord
 
 
 WORD_LENGTH = 5
@@ -6,11 +6,8 @@ TRIES = 6
 
 
 def generate_word() -> str:
-    with open('words_5.txt', 'r') as f:
-        words = f.readlines()
-        cleaned_words = [word.rstrip('\n') for word in words]
-
-    return random.choice(cleaned_words)
+    return RandomWord().word(word_min_length=WORD_LENGTH,
+                             word_max_length=WORD_LENGTH)
 
 
 def check_guess(player_word, secret_word) -> int:
